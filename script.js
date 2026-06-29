@@ -37,6 +37,16 @@ function updateActiveSection() {
   }
 }
 
+function setActiveFromHash() {
+  const sectionId = window.location.hash.replace("#", "");
+  if (sections.some((section) => section.id === sectionId)) {
+    setActiveSection(sectionId);
+    return true;
+  }
+
+  return false;
+}
+
 let scrollFrame = null;
 window.addEventListener(
   "scroll",
@@ -53,11 +63,12 @@ window.addEventListener(
   { passive: true }
 );
 
-window.addEventListener("load", updateActiveSection);
+window.addEventListener("load", () => {
+  if (!setActiveFromHash()) {
+    updateActiveSection();
+  }
+});
 
 window.addEventListener("hashchange", () => {
-  const sectionId = window.location.hash.replace("#", "");
-  if (sections.some((section) => section.id === sectionId)) {
-    setActiveSection(sectionId);
-  }
+  setActiveFromHash();
 });
