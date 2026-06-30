@@ -248,10 +248,27 @@ h3 {
 }
 
 .section,
+.story-section,
+.promo-band,
 .split-section,
 .contact-section {
   padding: clamp(58px, 8vw, 104px) clamp(18px, 6vw, 92px);
   scroll-margin-top: 94px;
+}
+
+.story-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.75fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  background: #ffffff;
+}
+
+.story-section p:not(.eyebrow) {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1.18rem, 2.2vw, 1.55rem);
+  font-weight: 800;
 }
 
 .section-heading {
@@ -384,6 +401,28 @@ h3 {
   font-weight: 850;
 }
 
+.promo-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #ffffff;
+  background: var(--aubergine);
+}
+
+.promo-band .eyebrow {
+  color: var(--gold);
+}
+
+.promo-band h2 {
+  max-width: 780px;
+  margin-bottom: 0;
+}
+
+.promo-band .button {
+  flex: 0 0 auto;
+}
+
 .split-section {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
@@ -449,6 +488,24 @@ h3 {
   font-weight: 900;
 }
 
+.event-callout {
+  margin-top: 28px;
+  padding: 22px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--gold);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.event-callout h3 {
+  margin-bottom: 8px;
+}
+
+.event-callout p:last-child {
+  margin-bottom: 0;
+  font-weight: 800;
+}
+
 .map-panel {
   display: flex;
   flex-direction: column;
@@ -507,6 +564,26 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.thank-you {
+  margin-top: 28px;
+  padding: 22px;
+  border-left: 6px solid var(--gold);
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.thank-you p {
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.thank-you strong {
+  color: var(--tomato);
+  font-size: 1.05rem;
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -528,10 +605,16 @@ footer a {
 
 @media (max-width: 900px) {
   .hero,
+  .story-section,
   .section-heading,
   .split-section,
   .contact-section {
     grid-template-columns: 1fr;
+  }
+
+  .promo-band {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .hero {
@@ -573,7 +656,8 @@ footer a {
   }
 
   .hero-actions,
-  .button {
+  .button,
+  .promo-band .button {
     width: 100%;
   }
 
